@@ -22,25 +22,29 @@ const App = () => {
     chamadaVideo.current = true;
   }, []);
 
-  return (
-    <SafeAreaView>
-      <View style={styles.container}>
-        <Text>Olá Mundo</Text>
-        <MainTitle />
-        <TouchableOpacity
-          value={chamarJitsi}
-          style={styles.button}
-          onPress={setChamarJitis}
-        >
-          <Text style={{ color: 'white' }}>Começar Chamada</Text>
-        </TouchableOpacity>
-
-        <View style={styles.jitsiView}>
-          <Jitsi />
+  if (!chamarJitsi) {
+    return (
+      <SafeAreaView>
+        <View style={styles.container}>
+          <Text style={{ color: 'blue' }}>Olá...</Text>
+          <MainTitle />
+          <TouchableOpacity
+            value={chamarJitsi}
+            style={styles.button}
+            onPress={setChamarJitis}
+          >
+            <Text style={{ color: 'white' }}>Começar Chamada</Text>
+          </TouchableOpacity>
         </View>
+      </SafeAreaView>
+    );
+  } else {
+    return (
+      <View style={styles.container}>
+        <Jitsi />
       </View>
-    </SafeAreaView>
-  );
+    );
+  }
 };
 
 export default App;
