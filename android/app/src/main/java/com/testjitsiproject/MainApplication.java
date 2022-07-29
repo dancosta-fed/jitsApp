@@ -43,7 +43,6 @@ public class MainApplication extends Application implements ReactApplication {
           return "app.bundle";
         }
       };
-
   private final ReactNativeHost mNewArchitectureNativeHost =
       new MainApplicationReactNativeHost(this);
 

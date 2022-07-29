@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react';
-import { View, SafeAreaView } from 'react-native';
+import {
+  View,
+  SafeAreaView,
+  StyleSheet,
+  ActivityIndicator,
+  StatusBar,
+} from 'react-native';
 import JitsiMeet, { JitsiMeetView } from 'react-native-jitsi-meet';
 
 const Jitsi = () => {
-  // eslint-disable-next-line prettier/prettier
-  // let [isIniciandoTeleatendimento, setIsIniciandoTeleatendimento] = useState(false);
-
   const onConferenceTerminated = (nativeEvent) => {
     /* Conference terminated event */
     console.log('ENCERROU A CONFERENCIA', nativeEvent);
@@ -13,8 +16,13 @@ const Jitsi = () => {
 
   const onConferenceJoined = (nativeEvent) => {
     /* Conference joined event */
-    // isIniciandoTeleatendimento = true;
     console.log('ENTROU NA CONFERENCIA ===>', nativeEvent);
+    setTimeout(() => {
+      StatusBar.setHidden(true, 'none'); // this might be false if you want to show statusbar
+      StatusBar.setTranslucent(true); // don't remove
+      StatusBar.setBackgroundColor('blue'); // you can remove
+      StatusBar.setBarStyle('light-content'); // you can remove
+    }, 100);
   };
 
   const onConferenceWillJoin = (nativeEvent) => {
@@ -62,6 +70,7 @@ const Jitsi = () => {
         welcomePageEnabled: false,
       };
       JitsiMeet.call(url, userInfo, options.meetFeatureFlags);
+
       /* You can also use JitsiMeet.audioCall(url) for audio only call */
       /* You can programmatically end the call with JitsiMeet.endCall() */
     }, 1000);
@@ -74,24 +83,13 @@ const Jitsi = () => {
   });
 
   return (
-    <SafeAreaView>
-      <View
-        // eslint-disable-next-line react-native/no-inline-styles
-        style={{
-          backgroundColor: 'black',
-          flex: 1,
-        }}
-      >
+    <SafeAreaView style={styles.container}>
+      <View style={styles.container}>
         <JitsiMeetView
           onConferenceTerminated={onConferenceTerminated}
           onConferenceJoined={onConferenceJoined}
           onConferenceWillJoin={onConferenceWillJoin}
-          // eslint-disable-next-line react-native/no-inline-styles
-          style={{
-            flex: 1,
-            height: '100%',
-            width: '100%',
-          }}
+          style={styles.container}
         />
       </View>
     </SafeAreaView>
@@ -99,3 +97,21 @@ const Jitsi = () => {
 };
 
 export default Jitsi;
+
+const styles = StyleSheet.create({
+  container: {
+    display: 'flex',
+    flex: 1,
+    height: '100%',
+    width: '100%',
+  },
+  loadingBackground: {
+    justifyContent: 'center',
+    alignItems: 'center',
+    position: 'absolute',
+    top: 0,
+    right: 0,
+    bottom: 0,
+    left: 0,
+  },
+});

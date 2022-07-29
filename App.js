@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useState, useRef, PermissionsAndroid } from 'react';
 import {
   SafeAreaView,
   View,
@@ -13,11 +13,6 @@ const App = () => {
   let [chamarJitsi, setChamarJitis] = useState(false);
   const chamadaVideo = useRef();
 
-  const onBtnPress = () => {
-    // eslint-disable-next-line no-alert
-    alert('Botão clicado!');
-  };
-
   useEffect(() => {
     chamadaVideo.current = true;
   }, []);
@@ -26,7 +21,7 @@ const App = () => {
     return (
       <SafeAreaView>
         <View style={styles.container}>
-          <Text style={{ color: 'blue' }}>Olá...</Text>
+          <Text style={{ color: 'blue' }}>Bem vindo...</Text>
           <MainTitle />
           <TouchableOpacity
             value={chamarJitsi}
@@ -40,7 +35,7 @@ const App = () => {
     );
   } else {
     return (
-      <View style={styles.container}>
+      <View style={styles.jitsiContainer}>
         <Jitsi />
       </View>
     );
@@ -56,6 +51,12 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     color: 'blue',
     marginTop: 100,
+  },
+  jitsiContainer: {
+    display: 'flex',
+    flex: 1,
+    height: '100%',
+    width: '100%',
   },
   button: {
     marginTop: 10,
