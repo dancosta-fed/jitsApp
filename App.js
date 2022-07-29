@@ -1,10 +1,11 @@
-import React, { useEffect, useState, useRef, PermissionsAndroid } from 'react';
+import React, { useEffect, useState, useRef } from 'react';
 import {
   SafeAreaView,
   View,
   Text,
   StyleSheet,
   TouchableOpacity,
+  StatusBar
 } from 'react-native';
 import MainTitle from './components/MainTitle/index';
 import Jitsi from './components/Jitsi';
@@ -14,6 +15,7 @@ const App = () => {
   const chamadaVideo = useRef();
 
   useEffect(() => {
+    
     chamadaVideo.current = true;
   }, []);
 
@@ -35,9 +37,10 @@ const App = () => {
     );
   } else {
     return (
-      <View style={styles.jitsiContainer}>
-        <Jitsi />
-      </View>
+        <View style={styles.jitsiContainer}>
+          {/* <StatusBar hidden /> */}
+          <Jitsi />
+        </View>
     );
   }
 };
