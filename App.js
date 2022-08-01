@@ -5,7 +5,6 @@ import {
   Text,
   StyleSheet,
   TouchableOpacity,
-  StatusBar
 } from 'react-native';
 import MainTitle from './components/MainTitle/index';
 import Jitsi from './components/Jitsi';
@@ -15,7 +14,6 @@ const App = () => {
   const chamadaVideo = useRef();
 
   useEffect(() => {
-
     chamadaVideo.current = true;
   }, []);
 
@@ -36,11 +34,7 @@ const App = () => {
       </SafeAreaView>
     );
   } else {
-    return (
-        <View style={styles.jitsiContainer}>
-          <Jitsi styles={styles.jitsiContainer} />
-        </View>
-    );
+    return <Jitsi styles={styles.jitsiContainer} />;
   }
 };
 
@@ -57,8 +51,8 @@ const styles = StyleSheet.create({
   jitsiContainer: {
     display: 'flex',
     flex: 1,
-    height: '100%',
-    width: '100%',
+    // height: '100%',
+    // width: '100%',
   },
   button: {
     marginTop: 10,
