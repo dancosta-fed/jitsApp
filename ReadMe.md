@@ -6,7 +6,7 @@ This is just a test app. Implementing JitsiMeet on React Native.
 
 npm install <br>
 npm start <br>
-npx react-native run-ios || npx react-native run-android <br>
+npx react-native run-ios <strong>||</strong> npx react-native run-android <br>
 
 ### What Have I done
 
