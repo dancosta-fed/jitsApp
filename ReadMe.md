@@ -4,9 +4,9 @@ This is just a test app. Implementing JitsiMeet on React Native.
 
 ## Run
 
-npm install
-npm start
-npx react-native run-ios || npx react-native run-android
+npm install <br>
+npm start <br>
+npx react-native run-ios || npx react-native run-android <br>
 
 ### What Have I done
 
