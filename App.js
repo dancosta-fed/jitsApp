@@ -15,7 +15,7 @@ const App = () => {
   const chamadaVideo = useRef();
 
   useEffect(() => {
-    
+
     chamadaVideo.current = true;
   }, []);
 
@@ -23,7 +23,7 @@ const App = () => {
     return (
       <SafeAreaView>
         <View style={styles.container}>
-          <Text style={{ color: 'blue' }}>Bem vindo...</Text>
+          <Text style={{ color: 'blue' }}>Olá..</Text>
           <MainTitle />
           <TouchableOpacity
             value={chamarJitsi}
@@ -38,8 +38,7 @@ const App = () => {
   } else {
     return (
         <View style={styles.jitsiContainer}>
-          {/* <StatusBar hidden /> */}
-          <Jitsi />
+          <Jitsi styles={styles.jitsiContainer} />
         </View>
     );
   }

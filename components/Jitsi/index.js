@@ -1,11 +1,6 @@
 import React, { useEffect, useState } from 'react';
-import {
-  View,
-  SafeAreaView,
-  StyleSheet,
-  ActivityIndicator,
-  StatusBar,
-} from 'react-native';
+import { StyleSheet } from 'react-native';
+
 import JitsiMeet, { JitsiMeetView } from 'react-native-jitsi-meet';
 
 const Jitsi = () => {
@@ -24,9 +19,8 @@ const Jitsi = () => {
     console.log('VAI ENTRAR NA CONFERENCIA', nativeEvent);
   };
 
-  useEffect(() => {   
-    setTimeout(() => {
-    const url = 'https://meet.saudeagora.com.vc/123'; // can also be only room name and will connect to jitsi meet servers
+  useEffect(() => {
+    const url = 'https://meet.jit.si/saudeagora123'; // último: https://meet.saudeagora.com.vc/123
     const userInfo = {
       displayName: 'User',
       email: 'user@example.com',
@@ -65,9 +59,11 @@ const Jitsi = () => {
     };
     JitsiMeet.call(url, userInfo, options.meetFeatureFlags);
 
+    // setTimeout(() => {
+    // }, 3000)
+
     /* You can also use JitsiMeet.audioCall(url) for audio only call */
     /* You can programmatically end the call with JitsiMeet.endCall() */
-    }, 5000) 
   }, []);
 
   useEffect(() => {
@@ -77,16 +73,12 @@ const Jitsi = () => {
   });
 
   return (
-    <SafeAreaView style={styles.container}>
-      <View style={styles.container}>
-        <JitsiMeetView
-          onConferenceTerminated={onConferenceTerminated}
-          onConferenceJoined={onConferenceJoined}
-          onConferenceWillJoin={onConferenceWillJoin}
-          style={styles.container}
-        />
-      </View>
-    </SafeAreaView>
+    <JitsiMeetView
+      onConferenceTerminated={onConferenceTerminated}
+      onConferenceJoined={onConferenceJoined}
+      onConferenceWillJoin={onConferenceWillJoin}
+      style={styles.container}
+    />
   );
 };
 
