@@ -24,7 +24,7 @@ const Jitsi = () => {
     setTimeout(() => {
       const url = 'https://meet.jit.si/saudeagora123'; // último: https://meet.saudeagora.com.vc/123servers
       const userInfo = {
-        displayName: 'User',
+        displayName: 'Dan',
         email: 'user@example.com',
         avatar: 'https:/gravatar.com/avatar/abc123',
       };
