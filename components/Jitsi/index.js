@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { StyleSheet } from 'react-native';
+import { StyleSheet, Platform } from 'react-native';
 import JitsiMeet, { JitsiMeetView } from 'react-native-jitsi-meet';
 
 const Jitsi = () => {
@@ -58,8 +58,15 @@ const Jitsi = () => {
         toolboxEnabled: true,
         welcomePageEnabled: false,
       };
-      JitsiMeet.call(url, userInfo, options, meetFeatureFlags);
-      // setOnIniciar(true);
+
+      switch (Platform.OS) {
+        case 'android':
+          setOnIniciar(true);
+          JitsiMeet.chamada(url, userInfo, options, meetFeatureFlags);
+          break;
+        default:
+          JitsiMeet.call(url, userInfo, options, meetFeatureFlags);
+      }
     }, 1000);
   }, []);
 
